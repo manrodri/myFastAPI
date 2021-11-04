@@ -1,21 +1,10 @@
 from typing import Optional
 
 from fastapi import FastAPI
-from fastapi.params import Body
+# from fastapi.params import Body
 from pydantic import BaseModel
 
 app = FastAPI()
-
-posts = [
-    {
-        "author": "Jhon",
-        "comment": "It's a beatiful day in London"
-    },
-{
-        "author": "Pete",
-        "comment": "Last Avengets movie: Not so good"
-    },
-]
 
 
 @app.get("/")
@@ -25,10 +14,10 @@ def root():
 
 @app.get("/posts")
 def get_posts():
-    return posts
+    return {"message": "this is my data"}
 
 
-# title str, content str
+# title str, content str, published bool, rating Optional[int]
 class Post(BaseModel):
     title: str
     content: str
